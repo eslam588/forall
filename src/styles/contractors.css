@@ -1,0 +1,135 @@
+.cardDesign{
+    width : 250px !important ; 
+    height: 250px !important;
+    padding : 30px !important; 
+    text-align : center !important;
+     margin : auto !important;
+     padding-bottom: 0 !important;
+     padding-top: 0 !important;
+     cursor: pointer;
+}
+.img-display{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    background: #0000007a;
+    z-index: 50;
+}
+.navigation{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.navigation ul{
+    display: flex;
+}
+.navigation ul li{
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+.navigation ul li a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: 0.5s;
+    color: black;
+}
+.navigation ul li.active a .icon{
+    transform: translateY(-50px);
+}
+.navigation ul li a .text{
+    position: absolute;
+    color: black;
+    font-weight: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+}
+.navigation ul li.active a .text{
+   opacity: 1;
+   transform: translateY(10px);
+}
+.indicator{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: greenyellow;
+    border-radius: 50%;
+    border: 6px solid black;
+    transition: 0.5s;
+}
+.images{
+    position: absolute;
+    top: -50px;
+    gap: 90px;
+    left: 30px;
+}
+.imgOutcome{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 119px;
+    height: 120px;
+}
+
+.mainColor{
+    color: #45C0BE !important;
+    text-decoration: none;
+}
+.mainColor:hover{
+    color: inherit;
+}
+.cardView{
+    height: 300px !important;
+    width: 300px !important;
+    padding: 40px !important;
+    text-align: center;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mangerCard{
+    width: 200px;
+    height: 150px;
+    text-align: center;
+}
+.ViewLink{
+    background: #45c0be !important;
+    border: #45c0be !important;
+    color: white !important;
+}
+
+
+.css-10w330c-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+   background:#45c0be !important;
+   color:white;
+}
+
+.css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon{
+    font-size:25px !important;
+}

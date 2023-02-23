@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eff2f5;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.sideBar {
+    position: relative;
+    z-index: 20;
+    height: 100vh;
+    width: 15%;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    background: white;
+}
+
+ul{
+    padding: 0 !important;
+}
+li{
+    cursor: pointer;
+}
+
+.sideBar.widthChange {
+    width: 10%;
+    text-align: center;
+}
+
+
+.sideBar div {
+    position: relative;
+    height: 10vh;
+    background-color: #ffffff;
+    box-shadow: none !important;
+    z-index: 23;
+}
+
+.sideBar li {
+    padding: 20px 20px 20px 10px;
+    transition: 0.3s ease-in-out;
+}
+
+li label.hideMenuList {
+    display: none;
+}
+
+.sideBar li i {
+    margin-right: 8px;
+}
+
+.selected {
+    background-color: #45C0BE;
+    color: white !important;
+
+}
+.headerbg{
+    background: linear-gradient(90deg, rgba(232,255,254,1) 4%, rgba(69,192,190,1) 32%);
+}
+
+.headerbgar{
+    background: rgb(69 192 190)
+}
+.bg-header{
+    background-color: #e8fffe !important;
+}
+input:focus{
+    outline: 0;
+}
+.sideBar span {
+    position: absolute;
+    color: #ffffff;
+    top: 20px;
+    right: 20px;
+}
+.setting{
+    background: transparent !important;
+    border: none !important;
+}
+
+
+.sideBar .cross-icon {
+    display: none;
+    color: #001629;
+}
+
+.sidebar-header {
+    display: flex;
+}
+
+.content {
+    width: 100%;
+    height: 100vh;
+}
+.searchBar{
+    width: 50%;
+    position: relative;
+}
+header {
+    background-color: #ffffff;
+    height: 10%;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#mobile {
+    display: none;
+}
+
+.menu-button {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.menu-button div:nth-child(1) {
+    position: absolute;
+    height: 4px;
+    border-radius: 20px;
+    background-color: #c7c7c7;
+    width: 100%;
+}
+
+.menu-button div:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    border-radius: 20px;
+    background-color: #c7c7c7;
+    width: 80%;
+}
+
+.menu-button div:nth-child(3) {
+    position: absolute;
+    height: 4px;
+    border-radius: 20px;
+    bottom: 0;
+    background-color: #c7c7c7;
+    width: 100%;
+}
+
+header img {
+    height: 40px;
+    border-radius: 100%;
+}
+
+header h1 {
+    color: #0092ff;
+}
+
+.content-data {
+    background-color: #F3F3F3;
+    padding: 0.5%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sideBar.showMenu {
+    left: 0;
+    display: block !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #45C0BE;
+}
+.desktopHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mobileHeader{
+    display: none;
+}
+.totalHeader{
+    font-size: 10px;
+    color: #616D6D;
+}
+.link{
+    text-decoration: none !important;
+    color: inherit;
+    font-weight: 500;
+}
+.link:hover{
+    color: inherit !important;
+}
+.searchResult{
+    background: white;
+    position: absolute;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    z-index: 200;
+}
+.searchinIput{
+    padding: 5px;
+}
+
+.searching{
+    width: 90%;
+    padding: 5px;
+}
+
+.imgSearchView{
+    width: 40px !important;
+    height: 40px !important;
+}
+
+@media(max-width:1200px) {
+    .sideBar {
+        width: 30%;
+    }
+    .desktopHeader{
+        display: none !important;
+    }
+    .mobileHeader{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .dataview{
+        flex-direction: column !important;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+    .widthHome{
+        width: 100% !important;
+    }
+}
+
+@media(max-width:900px) {
+ 
+    #desktop {
+        display: none;
+    }
+
+    #mobile {
+        display: block;
+    }
+
+    .sideBar {
+        position: absolute;
+        width: 30%;
+        top: 0;
+        left: -100%;
+        display: none;
+    }
+
+    .sideBar .cross-icon {
+        display: block;
+    }
+
+ 
+    .desktopHeader{
+        display: none !important;
+    }
+    .mobileHeader{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .dashbord-totals{
+        height:1000px !important;
+    }
+}
+
+
+
+
+@media(max-width:700px) {
+    .sideBar {
+        width: 40%;
+    }
+    .searchBar{
+        width: 50%;
+    }
+    .searching{
+        width: 80%;
+        padding: 5px;
+    }
+    .desktopHeader{
+        display: none !important;
+    }
+    .mobileHeader{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .dataview{
+        flex-direction: column !important;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding-bottom:20px;
+    }
+    .dashbord-totals{
+        height:1000px !important;
+    }
+}
+
+@media(max-width:400px) {
+    .sideBar {
+        width: 60%;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    #mobile {
+        height: 25px;
+    }
+    .searchBar{
+        width: 50%;
+    }
+    .desktopHeader{
+        display: none !important;
+    }
+    .mobileHeader{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .dataview{
+        flex-direction: column !important;
+        flex-wrap: wrap;
+        gap: 20px;
+        width:100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .dashbord-totals{
+        height:1000px !important;
+    }
+}
+
+@media(max-width:320px) {
+    .sideBar {
+        width: 80%;
+    }
+    .searchBar{
+        width: 50%;
+    }
+    .desktopHeader{
+        display: none !important;
+    }
+    .mobileHeader{
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+}

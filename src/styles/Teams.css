@@ -1,0 +1,70 @@
+.cardWidth{
+    width: 20%;
+    text-align: center;
+}
+.mangerPhoto{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 60px;
+    left: 5%;
+}
+.mangerPhotoar{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 60px;
+    right: 5%;
+}
+.mangerPhone{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 90px;
+    left: 28%;
+}
+.mangerPhonear{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 90px;
+    right: 28%;
+}
+
+.mangerLocation{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 90px;
+    left: 18%;
+    
+}
+.mangerLocationar{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 90px;
+    right: 18%;
+    
+}
+.flex-special{
+    flex: 0.3;
+}

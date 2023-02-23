@@ -1,0 +1,60 @@
+.inputPw{
+    background-color: transparent !important;
+}
+.inputPw:hover{
+    background-color: transparent !important;
+} 
+.headerSign{
+    margin-Right : auto !important ;
+    color : #45C0BE ;
+    font-weight: bold;
+    font-size: 35px !important;
+    font: normal normal bold 40px/53px Segoe UI !important;
+}
+.signInBg{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(/public/assests/assets/Background.svg);
+    background-size: cover;
+    background-position: 50% 90%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    direction: ltr !important;
+}
+.cardSign{
+    width : fit-content ;
+   margin-left: 200px !important;
+}
+.signInBtn{
+ background : #45C0BE;
+ margin-top: 30px;
+ margin-bottom: 30px;
+
+}
+.signInBtn:hover{
+    background-color : #45C0BE !important;
+}
+.MuiCheckbox-colorPrimary{
+    color: #45C0BE !important;
+}
+
+@media screen and (max-width : 1200px) {
+    .signInBg{
+        background-color: #45c0be;
+        background-image: none !important;
+        justify-content: center;
+    }
+    .cardSign{
+    margin-left : 0px !important
+    }
+}
+
+@media screen and (max-width : 400px) {
+    .cardSign{
+       width: 290px !important;
+        }
+}

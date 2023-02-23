@@ -1,0 +1,133 @@
+.phoneCompany{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -55px;
+    left: 59%;
+}
+.LocationCompany{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -53px;
+    left: 35%;
+}
+
+.companyLogo{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -80px;
+    left: 30px;
+}
+
+.userLogo{
+    border-radius: 50%;
+    border: 15px solid #F3F3F3;
+    background: #F3F3F3;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -80px;
+    left: 30px;
+}
+
+.overflow{
+    overflow: inherit !important;
+    margin-top: 100px;
+}
+.cardOverflow{
+    overflow: inherit;
+}
+
+.langSize{
+    flex: 2;
+    text-align: right;
+
+}
+
+.langSizear{
+    flex: 2;
+    text-align: left;
+
+}
+.langColor{
+    border: solid 1px #45c0be;
+}
+
+
+.toogle{
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+}
+.head{
+    font-weight: bold;
+}
+.cardSize{
+    height: auto !important;
+}
+.cardSizear{
+    direction: rtl;
+    height: auto !important;
+}
+
+.companyCover{
+    flex: 2;
+    text-align: right !important;
+}
+.cursor{
+    cursor: pointer;
+}
+
+.dropdown-menu.show{
+    text-align: center;
+    overflow: auto !important;    
+}
+
+.pwView{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000006e;
+    z-index: 100;
+}
+
+.dropshowme.show{
+    transform : translate(0px, 49px) !important;
+    height: fit-content !important;
+}
+.arDirection{
+    direction: rtl !important;
+}
+.overflowAuto{
+    overflow: auto !important;
+}
+
+.specialWidth{
+    width: 35% !important;
+}
+.mainBg{
+    background-color: #45c0be !important;
+}
+
+.inputView{
+    width: 50%;
+    margin: auto;
+    border: #45c0be solid 1px;
+}
