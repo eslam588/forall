@@ -1,8 +1,9 @@
 import React, { useState,useLayoutEffect } from 'react'
 import Activites from '../activites/Activites'
-import Dashboard from '../dashboard/DashboardChart'
+// import Dashboard from '../dashboard/DashboardChart'
+
 import Registrations from '../Regestraions/Registrations'
-import Totals from '../Totals/Totals'
+import Totals from '../Regestraions/Totals/Totals'
 import { Grid } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
@@ -26,7 +27,7 @@ import { useEffect } from 'react'
 
 export default function Home() {
 
-  let {salesData , agentsData , gmData ,MMData ,spvData , tlData , salesagentsData , vendorData, from, setFrom ,to, setTo } = useContext(homedata)
+  let {salesData , agentsData , gmData ,MMData ,spvData , tlData , salesagentsData,vendorData,from,setFrom ,to,setTo} = useContext(homedata)
 
   let {t} = useTranslation()
   
@@ -52,40 +53,40 @@ export default function Home() {
   
 
 const handleChange = (newValue) => {
-
-  setFrom(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}`);
+  let dashDate = `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1}${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}`
+  setFrom(dashDate);
   setValue2(newValue)
   if(localStorage.getItem('id') == null){  
-      salesData(sessionStorage.getItem('id') , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` ,to)
+      salesData(sessionStorage.getItem('id'),dashDate,to)
     }else{
-      salesData(localStorage.getItem('id') , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , to)
-    }
-agentsData(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , to , 1)
-gmData(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` ,to , 3)
-MMData(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , to , 4)
-spvData(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , to , 6)
-tlData(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , to , 5)
-salesagentsData(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , to , 7)
-vendorData(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , to , 8)
+      salesData(localStorage.getItem('id'),dashDate,to)
+  }
+  agentsData(dashDate,to,1)
+  gmData(dashDate,to,3)
+  MMData(dashDate,to,4)
+  spvData(dashDate,to,6)
+  tlData(dashDate,to,5)
+  salesagentsData(dashDate,to,7)
+  vendorData(dashDate,to,8)
 };
 
 
 const handleChange2 = (newValue) => {
-  console.log(newValue);
-  setTo(`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1}`);
+  let dashDate2 = `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1}${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}`
+  setTo(dashDate2);
   setValue(newValue)
   if(localStorage.getItem('id') == null){  
-    salesData(sessionStorage.getItem('id') , from , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}`)
+    salesData(sessionStorage.getItem('id') , from ,dashDate2)
     }else{
-      salesData(localStorage.getItem('id') , from ,`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}`)
+      salesData(localStorage.getItem('id') , from ,dashDate2)
     }
-agentsData(from , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}`, 1)
-gmData(from ,`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , 3)
-MMData(from ,`${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , 4)
-spvData(from , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , 6)
-tlData(from , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , 5)
-salesagentsData(from , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , 7)
-vendorData(from , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-' : '-0'}${ newValue.$M + 1} ${newValue.$D > 9 ? "-" : "-0"}${newValue.$D}` , 8)
+  agentsData(from,dashDate2,1)
+  gmData(from ,dashDate2,3)
+  MMData(from ,dashDate2,4)
+  spvData(from ,dashDate2,6)
+  tlData(from ,dashDate2,5)
+  salesagentsData(from ,dashDate2,7)
+  vendorData(from ,dashDate2,8)
 };
 
 
@@ -121,7 +122,8 @@ vendorData(from , `${newValue.$y }${newValue.$M == 10 || newValue.$M == 11 ? '-'
             </div>
             <Grid container   className=' justify-content-between dataview' style={{width : '100%'}} >
               <Grid item  xs={12} md={12} lg={6}   style={{height : '530px'}} className="w-100" > 
-                <Dashboard />
+                <Registrations/>
+                {/* <Dashboard /> */}
               </Grid>
               <Grid item  xs={12} md={12} lg={5.5}  style={{height : '530px'}} className="w-100" >
                 <GmChart />

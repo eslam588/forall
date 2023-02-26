@@ -87,12 +87,21 @@
     gap: 90px;
     left: 30px;
 }
+.cursorr{
+    padding-left: 65px;
+}
 .imgOutcome{
     border-radius: 50%;
     border: 15px solid #F3F3F3;
     background: #F3F3F3;
     width: 119px;
     height: 120px;
+}
+
+.imgoutcom{
+    width: 80px;
+    height: 80px;
+    padding:0 !important;
 }
 
 .mainColor{
@@ -104,8 +113,8 @@
 }
 .cardView{
     height: 300px !important;
-    width: 300px !important;
-    padding: 40px !important;
+    width: 250px !important;
+    padding: 20px !important;
     text-align: center;
     padding-top: 0 !important;
     padding-bottom: 0 !important;

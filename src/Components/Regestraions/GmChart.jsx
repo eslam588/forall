@@ -36,14 +36,10 @@ export default function GmChart() {
   let {loader , gmData , gmDatas , from,to } = useContext(homedata)
 
 
-
-
-
   var today = new Date();
   var yyyy = today.getFullYear();
 
   useLayoutEffect(() => {
-    console.log(from);
     gmData(from , to , 3)
   }, [])
 

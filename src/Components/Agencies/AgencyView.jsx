@@ -1,7 +1,7 @@
 import { Card, CardContent, CircularProgress, Grid } from '@mui/material'
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Totals from '../Totals/Totals';
+import Totals from '../Regestraions/Totals/Totals';
 import Avatar from '@mui/material/Avatar';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -20,7 +20,7 @@ export default function AgencyView() {
 
 
 
-    let {  loader    , getUserData  , setUserData , vendorLength , userError , setUserError , getAgencyData, agencyData, setAgencyData} = useContext(teamData)
+    let {loaderteam, getUserData  , setUserData , vendorLength , userError , setUserError , getAgencyData, agencyData, setAgencyData} = useContext(teamData)
     let {myinfo }= useContext(myProfile)
 
 
@@ -103,11 +103,14 @@ export default function AgencyView() {
 
   return (
     <div className='mt-5 position-relative'>
+     
       {
         userError != null ? <div className='text-center fs-5'>{userError}</div> : 
-        
+        <>
 
-        <Grid container className=' justify-content-center gap-5 mt-5 pt-5'>
+        {
+          loaderteam ? <p className='text-center mx-auto'><CircularProgress color='inherit' /></p> : 
+          <Grid container className=' justify-content-center gap-5 mt-5 pt-5'>
             {
               agencyData != null ? agencyData.data.manger == null && agencyData.data.employees ? '' : '' : ''  
             }
@@ -121,7 +124,7 @@ export default function AgencyView() {
             document.getElementById('myImg').src =   document.getElementById('agency').src 
           }}>
                        {
-                           agencyData != null ? <img id='agency' src={agencyData.data.logo  ? agencyData.data.logo == null ? '/assests/assets/avatar.png' : agencyData.data.logo['512px'] : '/assests/assets/avatar.png'} className={localStorage.getItem('Language') == "ar" || sessionStorage.getItem('Language')== "ar" ? 'mangerPhotoar' : 'mangerPhoto'}/> :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : '' 
+                           agencyData != null ? <img id='agency' src={agencyData.data.logo  ? agencyData.data.logo == null ? '/assests/assets/avatar.png' : agencyData.data.logo['512px'] : '/assests/assets/avatar.png'} className={localStorage.getItem('Language') == "ar" || sessionStorage.getItem('Language')== "ar" ? 'mangerPhotoar' : 'mangerPhoto'}/> :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : '' 
                        }
                        
                    </div>
@@ -141,12 +144,12 @@ export default function AgencyView() {
            <div className='text-center'>
            <h4>
            {
-            agencyData != null ? agencyData.data.name.value  :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+            agencyData != null ? agencyData.data.name.value  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
            }
            </h4>
            <p className='mainColor'>
            {
-            agencyData != null ? agencyData.data.description.value  :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+            agencyData != null ? agencyData.data.description.value  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
            }
            </p>
            </div>
@@ -155,7 +158,7 @@ export default function AgencyView() {
              <img src='/assests/assets/icons/email.svg' width="40px"  height= "40px" />
              <p className='mt-4 mb-2'>
              {
-            agencyData != null ? agencyData.data.user.email :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+            agencyData != null ? agencyData.data.user.email :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
              }
              </p>
            </CardContent>
@@ -165,7 +168,7 @@ export default function AgencyView() {
              <img src='/assests/assets/icons/Gender.svg' width="40px"  height= "40px"/>
              <p className='mt-4 mb-2'>
              {
-            agencyData != null ? agencyData.data.user.gender :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+            agencyData != null ? agencyData.data.user.gender :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
              }
              </p>
            </CardContent>
@@ -175,7 +178,7 @@ export default function AgencyView() {
              <img src='/assests/assets/icons/Language.svg' width="40px" height= "40px" />
              <p className='mt-4 mb-2'>
              {
-            agencyData != null ? agencyData.data.user.language.name_values.value  :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+            agencyData != null ? agencyData.data.user.language.name_values.value  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
              }
              </p>
            </CardContent>
@@ -207,7 +210,7 @@ export default function AgencyView() {
             <CardContent className='p-0 '>
                 <div className='p-5 text-center'>  
                 <h6 className='totalHeader'>{t("earning")}</h6>
-                <h2 style={{color : '#45C0BE'}}>{agencyData != null ? agencyData.data.employees.earning :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
+                <h2 style={{color : '#45C0BE'}}>{agencyData != null ? agencyData.data.employees.earning :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
                 </div>
                 <div><img src='/assests/assets/BlueChart.svg' width="100%"/></div>
             </CardContent>
@@ -216,7 +219,7 @@ export default function AgencyView() {
             <CardContent className='p-0 '>
                 <div className='p-5 text-center'>  
                 <h6 className='totalHeader'>{t("Subscribers")}</h6>
-                <h2 style={{color : '#E4D366'}}>{agencyData != null ? agencyData.data.employees.achieved_agencies :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
+                <h2 style={{color : '#E4D366'}}>{agencyData != null ? agencyData.data.employees.achieved_agencies :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
                 </div>
                 <div><img src='/assests/assets/YellowChart.svg' width="100%"/></div>
             </CardContent>
@@ -225,7 +228,7 @@ export default function AgencyView() {
             <CardContent className='p-0 '>
                 <div className='p-5 text-center '>  
                 <h6 className='totalHeader'>{t("Vendors")}</h6>
-                <h2 style={{color : '#BE5252'}}>{agencyData != null ? agencyData.data.employees.achieved_contracts :  loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
+                <h2 style={{color : '#BE5252'}}>{agencyData != null ? agencyData.data.employees.achieved_contracts :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
                 </div>
                 <div><img src='/assests/assets/RedChart.svg' width="100%"/></div>
             </CardContent>
@@ -339,7 +342,7 @@ export default function AgencyView() {
     
                          </>
                             
-                  ) : loader == true ? <CircularProgress color='inherit' />  : ''   : ''
+                  ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''   : ''
         }
 
        <div className='img-display' id='agenciesView'>
@@ -390,7 +393,7 @@ export default function AgencyView() {
     
                          </>
                             
-                  ) : loader == true ? <CircularProgress color='inherit' />  : ''   : ''
+                  ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''   : ''
         }
 
            <Button variant="contained" onClick={()=>document.getElementById('agenciesView').style.display = "none"} className="mt-3">{t('cancel')}</Button>
@@ -453,13 +456,13 @@ export default function AgencyView() {
                 </div>
                   </div>
                               </div>
-                  ) : loader == true ? <CircularProgress color='inherit' />  : ''
+                  ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''
                 }
               
               </CardContent>
               </Card>
               
-              : '' : loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+              : '' : loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
         }
       
       {
@@ -520,7 +523,7 @@ export default function AgencyView() {
                                 )
                             })
                             
-                  ) : loader == true ? <CircularProgress color='inherit' />  : ''
+                  ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''
                 }
               
               </CardContent>
@@ -529,7 +532,7 @@ export default function AgencyView() {
 
 
 
-              : '' : loader == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+              : '' : loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
         }
 
 
@@ -654,7 +657,7 @@ export default function AgencyView() {
     
                          </>
                             
-                  ) : loader == true ? <CircularProgress color='inherit' />  : ''
+                  ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''
                 
              
           : ''
@@ -715,7 +718,7 @@ export default function AgencyView() {
     
                          </>
                             
-                  ) : loader == true ? <CircularProgress color='inherit' />  : ''
+                  ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''
                 
              
           : ''
@@ -728,9 +731,15 @@ export default function AgencyView() {
             </div>
       
        </Grid>
-        </Grid>
+        </Grid> 
+        }
+        
 
+        
+        </>
       }
+
+      
 
 
      <div className='img-display' id='imgView'>

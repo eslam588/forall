@@ -120,7 +120,7 @@ export default function Contractors() {
 
 
   return (
-    <div className='w-75 m-auto h-90 mt-5 mb-5'>
+    <div className='m-auto h-90 mt-5 mb-5 mx-4'>
       <div>
         <div className='d-flex justify-content-between align-items-center mb-5'>
           <h2 className='fw-bold'>{t('Contractors')}</h2>

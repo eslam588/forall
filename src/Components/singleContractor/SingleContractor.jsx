@@ -48,19 +48,19 @@ export default function SingleContractor() {
   }, [])
   
   return (
-    <div className='w-75  m-auto  mb-5'>
+    <div className='m-auto  mb-5 mx-5 mt-3'>
       {
         contractView != null ? contractView.data.company ? 
         <Card className='position-relative mt-5 h-100' sx={{overflow : 'inherit'}}>
         <CardContent>
-        <div className='d-flex justify-content-between align-items-center '>
+        <div className='d-flex justify-content-between align-items-center  '>
 
 
         {/* images */}
 
 
           <div className='d-flex align-items-center images'>
-          <div className='cursor' onClick={()=>{
+          <div className='cursorr' onClick={()=>{
             document.getElementById('imgView').style.display = 'flex'
             document.getElementById('myImg').src =   document.getElementById('contracting').src 
           }}>
@@ -70,13 +70,13 @@ export default function SingleContractor() {
           </div>
           <div>
             <a href={contractView != null ? `https://www.google.com/maps/?q=${contractView.data.company.owner.address.latitude},${contractView.data.company.owner.address.longitude}` : ''} target='_blank'> 
-            <img src='/assests/assets/icons/LocationPng.png' className='imgOutcome' />
+            <img src='/assests/assets/icons/LocationPng.png' className='imgOutcome imgoutcom' />
             </a>
            
           </div>
           <div>
             <a href={`tel:${ contractView == null ? '' : contractView.data.company.owner.mobile}`}>
-            <img src='/assests/assets/icons/CallPng.png' className='imgOutcome' />
+            <img src='/assests/assets/icons/CallPng.png' className='imgOutcome imgoutcom' />
             </a>
           </div>
           </div>
@@ -89,6 +89,9 @@ export default function SingleContractor() {
           </div>
 
         </div>
+
+
+
         {/* company information */}
         <div className='mt-5 d-flex gap-2 '>
         <div className='text-center' style={{width : '300px'}}>
@@ -102,14 +105,14 @@ export default function SingleContractor() {
              contractView != null ? contractView.data.company.category != null ? contractView.data.company.category.name.value : t('confirmed') : <CircularProgress />
         }
         </p>
-        <p className='mainColor'>CompanyID: 
+        {/* <p className='mainColor'>CompanyID: 
         {
              contractView != null ? contractView.data.company.id  : <CircularProgress />
         }
-        </p>
-        <p className='mainColor'>UserID: 
+        </p> */}
+        <p className='mainColor'>ID : 
         {
-             contractView != null ? contractView.data.id  : <CircularProgress />
+             contractView != null ? <span> {contractView.data.id}</span>  : <CircularProgress />
         }
         </p>
           </div>
@@ -211,15 +214,6 @@ export default function SingleContractor() {
       </Card> 
         : <div className='text-center fs-5'>{t('userData')}</div> : loader == true ? <CircularProgress color='inherit' /> : <div className='text-center mt-3'>{errorData}</div>
       }
-      {
-
-      }
-     
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <div className='img-display' id='imgView'>
       <img src='/assests/assets/avatar.png'  width="15%" id='myImg'/>
       <Button variant="contained"  onClick={()=>document.getElementById('imgView').style.display = "none"} className="mt-3 mainBg">{t('cancel')}</Button>

@@ -22,7 +22,7 @@ import { siginInStore } from '../../Store/signInData/SigninStore'
 export default function GenralManger() {
 
 
-    let {loaderteam,setloaderteam, getUserData , userData , setUserData , vendorLength , userError , setUserError} = useContext(teamData)
+    let {loaderteam,getUserData , userData , setUserData , vendorLength , userError , setUserError} = useContext(teamData)
     let {singleUser} = useContext(siginInStore)
     let {myinfo }= useContext(myProfile)
  
@@ -32,7 +32,7 @@ export default function GenralManger() {
   // console.log(userId);
 
    useLayoutEffect(() => {
-      //  getUserData(userId.type,userId.id)
+       getUserData(userId.type,userId.id)
         let li =Array.from(document.querySelectorAll('li'))
         let sideBar = document.querySelector(".sideBar")
         sideBar.classList.remove('showMenu')

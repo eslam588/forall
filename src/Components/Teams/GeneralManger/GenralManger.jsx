@@ -151,16 +151,16 @@ export default function GenralManger() {
 
 
   return (
+    
     <div className='mb-5 pb-5 position-relative'>
-      {
-        userError != null ? <div className='text-center fs-5'>{userError}</div> : 
-        <Grid container className=' justify-content-center gap-5 mt-5 pt-5'>
+     {
+       userError != null ? <div className='text-center fs-5'>{userError}</div> : 
+       <Grid container className=' justify-content-center mt-5 pt-5'>
           {
-             userData != null ? userData.data.manager != null && userData.data.employees == null ? 
-             
-             <Grid item xs={12} md={10}  className=' mt-5 pt-5'>
-          <Card>
-           <CardContent>  
+            userData != null ? userData.data.manager != null && userData.data.employees == null ? 
+            <Grid item xs={12} md={10}  className=' mt-5 pt-5'>
+              <Card>
+              <CardContent>  
                <div className='d-flex justify-content-end align-items-center'>
                 <div className='d-flex align-items-center'>
                    <div className='mt-5 pt-4 text-center' onClick={()=>{
@@ -188,18 +188,18 @@ export default function GenralManger() {
                </div>
                </div>
             <div className='d-flex justify-content-center gap-3 align-items-center'>
-           <div className='text-center'>
-           <h4>
-           {
-            userData != null ? userData.data.user.name  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
-           }
-           </h4>
-           <p className='mainColor'>
-           {
-            userData != null ? userData.data.user.type.name.value  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
-           }
-           </p>
-           </div>
+              <div className='text-center'>
+              <h4>
+              {
+                userData != null ? userData.data.user.name  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+              }
+              </h4>
+              <p className='mainColor'>
+              {
+                userData != null ? userData.data.user.type.name.value  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+              }
+              </p>
+              </div>
            <Card className='mangerCard'>
            <CardContent>
              <img src='/assests/assets/icons/email.svg' width="40px"  height= "40px" />
@@ -221,33 +221,28 @@ export default function GenralManger() {
            </CardContent>
             </Card>
             <Card className='mangerCard'>
-           <CardContent>
-             <img src='/assests/assets/icons/Language.svg' width="40px" height= "40px" />
-             <p className='mt-4 mb-2'>
-             {
-            userData != null ? userData.data.user.language.name_values.value  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
-             }
-             </p>
-           </CardContent>
+              <CardContent>
+                  <img src='/assests/assets/icons/Language.svg' width="40px" height= "40px" />
+                  <p className='mt-4 mb-2'>
+                  {
+                  userData != null ? userData.data.user.language.name_values.value  :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
+                  }
+                  </p>
+              </CardContent>
             </Card>
-               </div>
-               <div className='mt-3'>
-               <div className='mainColor'>
+            </div>
+            <div className='mt-3'>
+              <div className='mainColor'>
                {t('branches')} : 
-                </div>
+              </div>
                {
               userData != null ? userData.data.branches.length != 0 ? 
               userData.data.branches.map(e=>{
-                return(
-                  <>
-                  <p>eeeeeeeee</p>
-                  {e?.address.detailed_address}
-                  </>
-                )
+                return( <p>{e?.address.detailed_address}</p>)
               })
-            : <p>ppfffffffp</p> : <p>pppffffff</p> 
+            : <p>not branches yet</p> : <p>no user found</p> 
               }
-               </div>
+            </div>
            </CardContent>
           </Card>
        
@@ -441,12 +436,12 @@ export default function GenralManger() {
 
 
         </div>
-          </Grid>
+       </Grid>
 
        : 
        <Grid item xs={12} md={5}  className=' mt-5 pt-5 m-auto'>
 
-        {/* personal details GM card --------------------------------------------------------------------------------------------------------------------------------- */}
+        {/* personal details GM card -------------------------------------------------------------------------- */}
 
        <Card>
           <CardContent>  
@@ -547,7 +542,7 @@ export default function GenralManger() {
           
           <Card  sx={{width : 'fit-content' , paddingBottom : "0" , padding : '0'}}>
             <CardContent className='p-0 '>
-                <div className='p-5 text-center'>  
+                <div className='p-4 text-center'>  
                 <h6 className='totalHeader'>{t("earning")}</h6>
                 <h2 style={{color : '#45C0BE'}}>{userData != null  ? userData.data.employees != null ? userData.data.employees.earning : '' :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
                 </div>
@@ -556,7 +551,7 @@ export default function GenralManger() {
         </Card>
         <Card  sx={{width : 'fit-content' , paddingBottom : "0" , padding : '0'}}>
             <CardContent className='p-0 '>
-                <div className='p-5 text-center'>  
+                <div className='p-4 text-center'>  
                 <h6 className='totalHeader'>{t("Vendors")}</h6>
                 <h2 style={{color : '#E4D366'}}>{userData != null ? userData.data.employees != null ?userData.data.employees.vendors.length : '' :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
                 </div>
@@ -565,7 +560,7 @@ export default function GenralManger() {
         </Card>
         <Card  sx={{width : 'fit-content' , paddingBottom : "0" , padding : '0'}}>
             <CardContent className='p-0 '>
-                <div className='p-5 text-center '>  
+                <div className='p-4 text-center '>  
                 <h6 className='totalHeader'>{t("Subscribers")}</h6>
                 <h2 style={{color : '#BE5252'}}>{userData != null ? userData.data.employees != null ? userData.data.employees.agents.length : '' :  loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''}</h2>
                 </div>
@@ -727,8 +722,6 @@ export default function GenralManger() {
 
 
        </div>
-
-
 
             </Grid>
              

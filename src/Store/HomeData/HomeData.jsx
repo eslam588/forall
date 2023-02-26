@@ -14,7 +14,6 @@ export function HomeAllData({children}){
   var today = new Date();
   var yyyy = today.getFullYear();
 
-
     const [loader, setLoader] = useState(false);
     const [sales, setSales] = useState(null);
     const [gmDatas, setgmDatas] = useState(null);
@@ -39,7 +38,6 @@ export function HomeAllData({children}){
         }
       }).then(response=>{
         if(response.status == 200){
-          console.log(response.data.data);
           setSales(response.data.data)
           setLoader(false)
         }
