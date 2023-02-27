@@ -317,15 +317,15 @@ export default function AgencyView() {
              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
              variant="dot"
             >
-         <Avatar alt="Company Logo" src={agencyData.data.employees.agents[0].company != null ? agencyData.data.employees.agents[0].company.logo != null ?  agencyData.data.employees.agents[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
+         <Avatar alt="Company Logo" src={agencyData?.data.employees.agents[0]?.company != null ? agencyData.data.employees.agents[0]?.company.logo != null ?  agencyData.data.employees.agents[0]?.company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
          </StyledBadge>
                      </div>
                     <div className='flex-special'>
-                 <span>{agencyData.data.employees.agents[0].company != null ? agencyData.data.employees.agents[0].company.name.value : agencyData.data.employees.agents[0].email}</span>
+                 <span>{agencyData?.data.employees.agents[0]?.company != null ? agencyData?.data.employees.agents[0]?.company.name.value : agencyData?.data.employees.agents[0]?.email}</span>
                     </div>
                     <div>
                     {
-           agencyData.data.employees.agents[0].company == null ? '' :
+           agencyData?.data.employees.agents[0]?.company == null ? '' :
          <Link to={`/home/Agency/${agencyData.data.employees.agents[0].id}/${agencyData.data.employees.agents[0].company.id}`} className='btn btn-warning ViewLink' onClick={()=>{
           setAgencyData(null)
            getAgencyData(agencyData.data.employees.agents[0].company.id , agencyData.data.employees.agents[0].id )
@@ -515,7 +515,7 @@ export default function AgencyView() {
                         {
                       e.type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${e.id}/${data.type}`} className='btn btn-warning ViewLink' onClick={()=>{
                         setId(e.id)
-                        getUserData(e.id ,  agencyData.data.id)}}>{t('view')}</Link>
+                        getUserData(agencyData.data.id,e.id)}}>{t('view')}</Link>
                         }
                       </div>
                       </div>
@@ -595,15 +595,15 @@ export default function AgencyView() {
                   anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                   variant="dot"
                  >
-              <Avatar alt="Company Logo" src={agencyData.data.employees.vendors[0].company != null ? agencyData.data.employees.vendors[0].company.logo != null ?  agencyData.data.employees.vendors[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
+              <Avatar alt="Company Logo" src={agencyData?.data.employees.vendors[0]?.company != null ? agencyData?.data.employees.vendors[0].company.logo != null ?  agencyData?.data.employees.vendors[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
               </StyledBadge>
                           </div>
                          <div className='flex-special'>
-                      <span>{agencyData.data.employees.vendors[0].email}</span>
+                      <span>{agencyData?.data.employees.vendors[0]?.email}</span>
                          </div>
                          <div>
                 {
-                  agencyData.data.employees.vendors[0].state == "joined" ?    
+                  agencyData?.data.employees.vendors[0]?.state == "joined" ?    
                   <Link to={`/home/contractor/${agencyData.data.employees.vendors[0].id}`} className='btn btn-warning ViewLink' onClick={()=>{
                     if(localStorage.getItem('id' ) == null){
                       sessionStorage.setItem('id' , agencyData.data.employees.vendors[0].company.id)
@@ -611,7 +611,7 @@ export default function AgencyView() {
                       localStorage.setItem('id' , agencyData.data.employees.vendors[0].company.id)
                     }
                   } 
-                  }>{t('view')}</Link> : <div className='text-danger'>{agencyData.data.employees.vendors[0].state}</div>
+                  }>{t('view')}</Link> : <div className='text-danger'>{agencyData?.data.employees.vendors[0]?.state}</div>
                 }
               </div>
                          <div>

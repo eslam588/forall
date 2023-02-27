@@ -65,7 +65,7 @@ export default function SingleContractor() {
             document.getElementById('myImg').src =   document.getElementById('contracting').src 
           }}>
           {
-             contractView != null ? <img id='contracting' src={contractView.data.company.logo["512px"]} className='imgOutcome'/> : <div className='text-center mt-3'> <CircularProgress /> </div>
+             contractView != null ? <img id='contracting' src={contractView.data.company.logo["512px"]} className='imgOutcome'/> : <div className='text-center mx-auto mt-3'> <CircularProgress /> </div>
           }
           </div>
           <div>
@@ -212,7 +212,7 @@ export default function SingleContractor() {
       </div>
         </CardContent>
       </Card> 
-        : <div className='text-center fs-5'>{t('userData')}</div> : loader == true ? <CircularProgress color='inherit' /> : <div className='text-center mt-3'>{errorData}</div>
+        : <div className='text-center fs-5'>{t('userData')}</div> : loader == true ? <div className='pt-5 text-center mx-auto mt-5 pt-5'><CircularProgress color='inherit'/> </div> : <div className='text-center mt-3'>{errorData}</div>
       }
       <div className='img-display' id='imgView'>
       <img src='/assests/assets/avatar.png'  width="15%" id='myImg'/>

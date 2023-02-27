@@ -30,7 +30,7 @@ export default function GenralManger() {
 
 
    useLayoutEffect(() => {
-       
+      setUserError(null)
       if(localStorage.getItem('Userid') == null && localStorage.getItem('id') == null){
         getUserData(sessionStorage.getItem('id'),sessionStorage.getItem('Userid'))
       }else{
@@ -56,8 +56,15 @@ export default function GenralManger() {
         }
     }, [])
 
+    useEffect(()=>{
+      setUserError(null)
+      if(localStorage.getItem('Userid') == null && localStorage.getItem('id') == null){
+        getUserData(sessionStorage.getItem('id'),sessionStorage.getItem('Userid'))
+      }else{
+        getUserData(sessionStorage.getItem('id'),sessionStorage.getItem('Userid'))
+      }
 
-    console.log(userData)
+    },[])
     
     const StyledBadge = styled(Badge)(({ theme }) => ({
         '& .MuiBadge-badge': {

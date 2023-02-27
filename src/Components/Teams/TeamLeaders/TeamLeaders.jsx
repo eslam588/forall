@@ -37,7 +37,6 @@ export default function TeamLeaders() {
 
     }, [])
 
-
   return (
     <div className='w-75 m-auto h-90 mt-5'>
       <div className='mt-5 pt-5'>
@@ -67,7 +66,7 @@ export default function TeamLeaders() {
                     )
                 }
                 )
-               :  <div className='pt-5 h1'>{t('No_Agents')}</div>  
+               :  <div className='pt-5 h1'>{t('No_Agents')}</div>
                 
             ) : loader == true ? <CircularProgress color='inherit'/>  : <div className='text-center mt-3'>{errorData == null ? 'Error Happend' : errorData}</div>
         }
@@ -83,7 +82,7 @@ export default function TeamLeaders() {
         <br/>
         <br/>
         <br/>
-        </div>
+      </div>
       </div>
   )
 }

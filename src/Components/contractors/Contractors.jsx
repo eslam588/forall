@@ -34,7 +34,7 @@ export default function Contractors() {
 
 
 
-  let { vendors,allContractors,nextContractors,errorData,loader,from,setFrom,to,setTo,contractorsPaginations} = useContext(contractors)
+  let { vendors,allContractors,nextContractors,errorData,setErrorData,loader,from,setFrom,to,setTo,contractorsPaginations} = useContext(contractors)
   let {getUserData , userData , setUserData , vendorLength , userError , setUserError} = useContext(teamData)
   // let {salesData , agentsData , gmData ,MMData ,spvData , tlData , salesagentsData , vendorData, from, setFrom ,to, setTo } = useContext(homedata)
 
@@ -90,6 +90,7 @@ export default function Contractors() {
     // },[])
 
     useEffect(()=>{
+      setErrorData(null)
       if(localStorage.getItem('id') == null){
        contractorsPaginations(sessionStorage.getItem('id'),from,to,page)
        }else{
@@ -179,8 +180,8 @@ export default function Contractors() {
                       )
                   })
                   : <div className='pt-5 h2'>{t('No_sbscribers')}</div> 
-              ) :      
-              loader == true ? <CircularProgress color='inherit'/>  : 'Error Happend'
+              ) :    
+              loader == true ? <div className='pt-5 text-center mx-auto'><CircularProgress color='inherit'/></div> : 'Error Happend'
           }
            </Grid>
           </CardContent>

@@ -25,10 +25,10 @@ export default function Home() {
 
   let navigate = useNavigate()
 
-  let {logout , loader , searchByUser , singleUser , setSingleUser} = useContext(siginInStore)
+  let {logout , loader , searchByUser , singleUser , setSingleUser,setUserError} = useContext(siginInStore)
   let {setloaderteam} = useContext(teamData);
   let { Languages , lang } = useContext(myProfile)
-  let {getUserData,setUserData} = useContext(teamData)
+  let {getUserData,setUserData,setErrorData} = useContext(teamData)
 
 
   let {t} = useTranslation()
@@ -57,11 +57,11 @@ export default function Home() {
     
    let [down , setDown] = useState(false)
    
-   let handelloadingornotfound = () => {
-    setloaderteam(true) 
-    setTimeout(() => {
+   let handelloadingornotfound = async () => {
+    setUserData(null)
+    setloaderteam(true)
+    await setTimeout(() => {
       setloaderteam(false)
-      setUserData(null)
     },1000)
    }
    
@@ -145,7 +145,7 @@ export default function Home() {
                         <div></div>
                         <div></div>
                     </div>
-                    <div className='bg-white p-2 rounded searchBar' >
+                    {/* <div className='bg-white p-2 rounded searchBar' >
                     <IconContext.Provider value={{color : '#45C0BE', size: '30px'}}>
                        <CiSearch/>
                     </IconContext.Provider>
@@ -174,7 +174,7 @@ export default function Home() {
                       : ''
                     }
                     
-                    </div>
+                    </div> */}
 
                     <div className='text-white gap-3 desktopHeader'>
                     <h3>{t('Welcome')} {localStorage.getItem('Name') == null ? sessionStorage.getItem('Name') : localStorage.getItem('Name')}</h3>

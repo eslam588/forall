@@ -94,7 +94,8 @@ export default function Dashboard() {
           {
             fill: true,
             label: t('Regestrations'),
-            data: [ sales.chart.January , sales.chart.February , sales.chart.March  ,sales.chart.April  , sales.chart.May  , sales.chart.June  , sales.chart.July  , sales.chart.August  , sales.chart.September  , sales.chart.October , sales.chart.November  ,sales.chart.December ],
+            data: [ sales.chart?.January , sales.chart?.February , sales.chart?.March  ,sales.chart?.April  , sales.chart?.May  , sales.chart?.June  , sales.chart?.July  , 
+              sales.chart?.August  , sales.chart?.September  , sales.chart?.October , sales.chart?.November  , sales.chart?.December ],
             borderColor: '#45C0BE',
             backgroundColor: 'rgb(69, 192, 190)',
             borderRadius: Number.MAX_VALUE,

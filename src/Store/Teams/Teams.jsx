@@ -59,6 +59,10 @@ export function TeamsData({children}){
     // get specifec user 
 
     async function getUserData(vendorId,userrId){
+        console.log(vendorId);
+        console.log(userrId);
+        setUserError(null)
+        setErrorData(null)
         setloaderteam(true)
         setUserData(null)
         let res = await axios.get(`/operation/subscribe?id=${vendorId}&user_id=${userrId}`,{

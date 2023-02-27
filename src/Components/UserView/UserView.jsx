@@ -17,12 +17,9 @@ import { myProfile } from '../../Store/ProfileData/profileData';
 import { siginInStore } from '../../Store/signInData/SigninStore'
 
 
-
-
 export default function GenralManger() {
 
-
-    let {loaderteam,getUserData , userData , setUserData , vendorLength , userError , setUserError} = useContext(teamData)
+    let {loaderteam,getUserData , userData , setUserData , vendorLength , userError , setUserError,setErrorData} = useContext(teamData)
     let {singleUser} = useContext(siginInStore)
     let {myinfo }= useContext(myProfile)
  
@@ -30,7 +27,7 @@ export default function GenralManger() {
     let userId = useParams()
 
   // console.log(userId);
-
+ 
    useLayoutEffect(() => {
        getUserData(userId.type,userId.id)
         let li =Array.from(document.querySelectorAll('li'))
@@ -150,7 +147,8 @@ export default function GenralManger() {
 
 
   return (
-    <div className='mt-5 position-relative'>
+   
+    <div className='mt-5 mb-5 position-relative'>
       { 
         userError != null ? <div className='text-center fs-5'>{userError}</div> : 
         loaderteam == true ? <Card sx={{padding : '10px' ,paddingTop:'30px',height : '100px',textAlign:'center',fontSize:'20px',fontWeight:'bold'}}><CircularProgress color='inherit'/> </Card>:
@@ -246,10 +244,9 @@ export default function GenralManger() {
               }
                </div>
            </CardContent>
-       </Card>
+        </Card>
        
-       
-       <div className='mt-3 d-flex align-items-center justify-content-between dataview gap-3'>
+        <div className='mt-3 d-flex align-items-center justify-content-between dataview gap-3'>
         <Card  sx={{width : 'fit-content' , paddingBottom : "0" , padding : '0'}}>
             <CardContent className='p-0 '>
                 <div className='p-5 text-center'>  
@@ -277,121 +274,113 @@ export default function GenralManger() {
                 <div><img src='/assests/assets/RedChart.svg' width="100%"/></div>
             </CardContent>
         </Card>
-    </div>
+        </div>
 
+        {
+          userData != null ? vendorLength == 0 ? '' ||  userData?.data.employees == null :      
+              userData != null ? (
+                userData?.data.employees == null ? '' : 
+                  <>
+                  <Card className='mt-3'>
+                        <CardContent className='text-center p-5'>
+                          
+                  <div className='d-flex justify-content-between align-items-center mainColor' >
+                      <h2 >{t('Agencies')}</h2>
+                      <h6 className='cursor' onClick={()=>document.getElementById('agenciesView').style.display = "flex"}>{t('view_all')}</h6>
+                        </div>
+                        
 
-
-         {
-          userData != null ? vendorLength == 0 ? '' ||  userData?.data.employees == null :  
-                
-                  userData != null ? (
-                    userData?.data.employees == null ? '' : 
-                     <>
-                     <Card className='mt-3'>
-                            <CardContent className='text-center p-5'>
-                              
-                      <div className='d-flex justify-content-between align-items-center mainColor' >
-                          <h2 >{t('Agencies')}</h2>
-                          <h6 className='cursor' onClick={()=>document.getElementById('agenciesView').style.display = "flex"}>{t('view_all')}</h6>
-                           </div>
-                            
-
-                            {
-                              userData?.data.employees.agents.length > 1 ? 
-                              <>
-                                  <div>
-                              <div className='mt-4 d-flex justify-content-between align-items-center ' >
-                             <div className='cursor' onClick={()=>{
-                     document.getElementById('imgView').style.display = 'flex'
-                     document.getElementById('myImg').src = document.getElementById('avatar1').src
-                   }}>
-                               <Avatar>
-                              <img  alt="Company Logo" width="100%" id="avatar1" src={userData.data.employees.agents[0].company != null ? userData.data.employees.agents[0].company.logo != null ?  userData.data.employees.agents[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
-                               </Avatar>
-                            </div>
-                           <div className='flex-special'>
-                        <span>{userData?.data.employees.agents[0].email}</span>
-                           </div>
-                           <div>
-                  {
-                  userData.data.employees.agents[0].state != "joined" ? <div className='text-danger'>{userData.data.employees.agents[0].state}</div> :
-                <Link to={`/home/Agency/${userData?.data.employees.agents[0].id}/${userData.data.employees.agents[0].company != null ? userData.data.employees.agents[0].company.id : ''}`} className='btn btn-warning ViewLink' onClick={()=>getUserData(userData.data.employees.agents[0].id)}>{t('view')}</Link>
-                  }
-                </div>
-                           <div>
-                           </div>
-                                 </div>
-                                 </div>
-                                 <div>
-                              <div className='mt-4 d-flex justify-content-between align-items-center' >
-                             <div  className="cursor" onClick={()=>{
-                     document.getElementById('imgView').style.display = 'flex'
-                     document.getElementById('myImg').src = document.getElementById('avatar2').src
-                   }}>
-               
-                <Avatar alt="Company Logo" src={userData.data.employees.agents[1].company != null ? userData.data.employees.agents[1].company.logo != null ?  userData.data.employees.agents[1].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } >
-                  <img alt="Company Logo" id="avatar2" width='100%'  src={userData.data.employees.agents[1].company != null ? userData.data.employees.agents[1].company.logo != null ?  userData?.data.employees.agents[1].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' }/>
-                  </Avatar>
-               
-                            </div>
-                           <div className='flex-special'>
-                        <span>{userData.data.employees.agents[1].email}</span>
-                           </div>
-                           <div>
-                  {
-                  userData?.data.employees.agents[1].state != "joined" ? <div className='text-danger'>{userData.data.employees.agents[1].state}</div> :
-                <Link to={`/home/Agency/${userData.data.employees.agents[1].id}/${userData.data.employees.agents[1].company != null ? userData.data.employees.agents[1].company.id : ''}`} className='btn btn-warning ViewLink' onClick={()=>getUserData(userData.data.employees.agents[1].id)}>{t('view')}</Link>
-                  }
-                </div>
-                           <div>
-                           </div>
-                </div>
-                         </div>
-                              </>
-                              :
+                        {
+                          userData?.data.employees.agents.length > 1 ? 
+                          <>
                               <div>
-                              <div className='mt-4 d-flex justify-content-between align-items-center ' >
-                             <div className='cursor' onClick={()=>{
-                     document.getElementById('imgView').style.display = 'flex'
-                     document.getElementById('myImg').src = document.getElementById('avatar1').src
-                   }}>
-                               <Avatar>
-                              <img  alt="Company Logo" width="100%" id="avatar1" src={userData.data.employees.agents[0]?.company != null ? userData.data.employees.agents[0]?.company.logo != null ?  userData.data.employees.agents[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
-                               </Avatar>
-                            </div>
-                           <div className='flex-special'>
-                        <span>{userData.data.employees.agents[0]?.email}</span>
-                           </div>
-                           <div>
-                  {
-                  userData.data.employees.agents[0]?.state != "joined" ? <div className='text-danger'>{userData.data.employees.agents[0]?.state}</div> :
-                <Link to={`/home/Agency/${userData.data.employees.agents[0].id}/${userData.data.employees.agents[0].company != null ? userData.data.employees.agents[0].company.id : ''}`} className='btn btn-warning ViewLink' onClick={()=>getUserData(userData.data.employees.agents[0].id)}>{t('view')}</Link>
-                  }
-                </div>
-                           <div>
-                           </div>
-                                 </div>
-                                 </div>
-                            }
-                            
-                     </CardContent>
-              </Card>  
-    
-                         </>
-                            
-                  ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''
-                
-             
+                          <div className='mt-4 d-flex justify-content-between align-items-center ' >
+                          <div className='cursor' onClick={()=>{
+                  document.getElementById('imgView').style.display = 'flex'
+                  document.getElementById('myImg').src = document.getElementById('avatar1').src
+                }}>
+                            <Avatar>
+                          <img  alt="Company Logo" width="100%" id="avatar1" src={userData.data.employees.agents[0].company != null ? userData.data.employees.agents[0].company.logo != null ?  userData.data.employees.agents[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
+                            </Avatar>
+                        </div>
+                        <div className='flex-special'>
+                    <span>{userData?.data.employees.agents[0].email}</span>
+                        </div>
+                        <div>
+              {
+              userData.data.employees.agents[0].state != "joined" ? <div className='text-danger'>{userData.data.employees.agents[0].state}</div> :
+            <Link to={`/home/Agency/${userData?.data.employees.agents[0].id}/${userData.data.employees.agents[0].company != null ? userData.data.employees.agents[0].company.id : ''}`} className='btn btn-warning ViewLink' onClick={()=>getUserData(userData.data.employees.agents[0].id)}>{t('view')}</Link>
+              }
+            </div>
+                        <div>
+                        </div>
+                              </div>
+                              </div>
+                              <div>
+                          <div className='mt-4 d-flex justify-content-between align-items-center' >
+                          <div  className="cursor" onClick={()=>{
+                  document.getElementById('imgView').style.display = 'flex'
+                  document.getElementById('myImg').src = document.getElementById('avatar2').src
+                }}>
+            
+            <Avatar alt="Company Logo" src={userData.data.employees.agents[1].company != null ? userData.data.employees.agents[1].company.logo != null ?  userData.data.employees.agents[1].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } >
+              <img alt="Company Logo" id="avatar2" width='100%'  src={userData.data.employees.agents[1].company != null ? userData.data.employees.agents[1].company.logo != null ?  userData?.data.employees.agents[1].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' }/>
+              </Avatar>
+            
+                        </div>
+                        <div className='flex-special'>
+                    <span>{userData.data.employees.agents[1].email}</span>
+                        </div>
+                        <div>
+              {
+              userData?.data.employees.agents[1].state != "joined" ? <div className='text-danger'>{userData.data.employees.agents[1].state}</div> :
+            <Link to={`/home/Agency/${userData.data.employees.agents[1].id}/${userData.data.employees.agents[1].company != null ? userData.data.employees.agents[1].company.id : ''}`} className='btn btn-warning ViewLink' onClick={()=>getUserData(userData.data.employees.agents[1].id)}>{t('view')}</Link>
+              }
+            </div>
+                        <div>
+                        </div>
+            </div>
+                      </div>
+                          </>
+                          :
+                          <div>
+                          <div className='mt-4 d-flex justify-content-between align-items-center ' >
+                          <div className='cursor' onClick={()=>{
+                  document.getElementById('imgView').style.display = 'flex'
+                  document.getElementById('myImg').src = document.getElementById('avatar1').src
+                }}>
+                            <Avatar>
+                          <img  alt="Company Logo" width="100%" id="avatar1" src={userData.data.employees.agents[0]?.company != null ? userData.data.employees.agents[0]?.company.logo != null ?  userData.data.employees.agents[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
+                            </Avatar>
+                        </div>
+                        <div className='flex-special'>
+                    <span>{userData.data.employees.agents[0]?.email}</span>
+                        </div>
+                        <div>
+              {
+              userData.data.employees.agents[0]?.state != "joined" ? <div className='text-danger'>{userData.data.employees.agents[0]?.state}</div> :
+            <Link to={`/home/Agency/${userData.data.employees.agents[0].id}/${userData.data.employees.agents[0].company != null ? userData.data.employees.agents[0].company.id : ''}`} className='btn btn-warning ViewLink' onClick={()=>getUserData(userData.data.employees.agents[0].id)}>{t('view')}</Link>
+              }
+            </div>
+                        <div>
+                        </div>
+                              </div>
+                              </div>
+                        }
+                        
+                  </CardContent>
+          </Card>  
+
+                      </>
+                        
+              ) : loaderteam == true ? <CircularProgress color='inherit' />  : ''
           : ''
         }
 
-
-
         <div className='img-display' id='agenciesView'>
 
-        {
-          userData != null ? vendorLength == 0 ? '' ||  userData.data.employees == null :  
-                
+         {
+              userData != null ? vendorLength == 0 ? '' ||  userData.data.employees == null :  
                   userData != null ? (
                     userData.data.employees == null ? '' : 
                      <>
@@ -409,8 +398,8 @@ export default function GenralManger() {
                                     <div key={e.id}>
                                     <div className='mt-4 d-flex justify-content-between align-items-center' id={e.id}>
                                    <div className='cursor' onClick={()=>{
-                     document.getElementById('imgView').style.display = 'flex'
-                     document.getElementById('myImg').src = document.getElementById('avatar3').src
+                                  document.getElementById('imgView').style.display = 'flex'
+                                  document.getElementById('myImg').src = document.getElementById('avatar3').src
                    }}>
                      
                       <Avatar >
@@ -451,9 +440,10 @@ export default function GenralManger() {
 
         </div>
 
+       </Grid> 
 
 
-       </Grid>
+
        <Grid item xs={12} md={5} className=' mt-5 pt-5'>
         {
               userData != null ? userData.data.manager != null ?  
@@ -530,7 +520,7 @@ export default function GenralManger() {
 
 
 
-
+      {/* team leader ------------------------------------------------------------------------------------------ */}
 
       
       {
@@ -597,9 +587,11 @@ export default function GenralManger() {
       </div>
       <div>
         {
-      userData.data.employees.employees[0].type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${userData.data.employees.employees[0].id}/${userId.type}`} className='btn btn-warning ViewLink' onClick={()=>{
-        getUserData(userData.data.employees.employees[0].id ,  userId.type)}}>{t('view')}</Link>
-        }
+          userData.data.employees.employees[0].type.name.value == "Administrator" ? '' : <Link to={`/home/userView/${userData.data.employees.employees[0].id}/${userId.type}`} className='btn btn-warning ViewLink' 
+          onClick={()=>{
+          getUserData(userId.type,userData.data.employees.employees[0].id)}}
+          >{t('view')}</Link>
+          }
       </div>
       </div>
                   </div>
@@ -652,8 +644,10 @@ export default function GenralManger() {
       </div>
       <div>
         {
-      userData.data.employees.employees[1].type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${userData.data.employees.employees[1].id}/${userId.type}`} className='btn btn-warning ViewLink' onClick={()=>{
-        getUserData(userData.data.employees.employees[1].id ,  userId.type)}}>{t('view')}</Link>
+      userData.data.employees.employees[1].type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${userData.data.employees.employees[1].id}/${userId.type}`} className='btn btn-warning ViewLink' 
+      onClick={()=>{
+        getUserData(userId.type,userData.data.employees.employees[1].id)}}
+      >{t('view')}</Link>
         }
       </div>
                       </div>
@@ -709,9 +703,12 @@ export default function GenralManger() {
       </div>
       <div>
         {
-      userData.data.employees.employees[0].type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${userData.data.employees.employees[0].id}/${userId.type}`} className='btn btn-warning ViewLink' onClick={()=>{
-        getUserData(userData.data.employees.employees[0].id ,  userId.type)}}>{t('view')}</Link>
+      userData.data.employees.employees[0].type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${userData.data.employees.employees[0].id}/${userId.type}`} className='btn btn-warning ViewLink' 
+        onClick={()=>{
+        getUserData(userId.type,userData.data.employees.employees[0].id)}}
+        >{t('view')}</Link>
         }
+
       </div>
       </div>
                   </div>
@@ -727,10 +724,28 @@ export default function GenralManger() {
               : '' 
               : '' : loaderteam == true ? <CircularProgress color='inherit' className='mangerPhoto'/>  : ''
         }
+   
 
 
 
-        <div className='img-display' id='employeesView'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* <div className='img-display' id='employeesView'>
             {
                userData != null ? 
                userData != null ? (
@@ -798,11 +813,9 @@ export default function GenralManger() {
                           </div>
                           <div>
                             {
-                          e.type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${e.id}/${userId.type}`} className='btn btn-warning ViewLink' onClick={()=>{
+                             e.type.name.value == "Administrator" ? '' :  <Link to={`/home/userView/${e.id}/${userId.type}`} className='btn btn-warning ViewLink' onClick={()=>{
                             document.getElementById('employeesView').style.display = 'none'
-                            getUserData(e.id , userId.type)}}>{t('view')}</Link>
-
-                            
+                            getUserData(e.id,userId.type)}}>{t('view')}</Link>
                             }
                           </div>
                           </div>
@@ -822,10 +835,10 @@ export default function GenralManger() {
                : ''
             }
    <Button variant="contained" onClick={()=>document.getElementById('employeesView').style.display = 'none'} className="mt-3">{t('cancel')}</Button>
-            </div>
+            </div> */}
 
 
-        {
+        {/* {
           userData != null ? vendorLength == 0 ? '' ||  userData.data.employees == null :  
                 
                   userData != null ? (
@@ -841,7 +854,6 @@ export default function GenralManger() {
                               userData.data.employees.vendors.length > 1 ? 
                               <>
                               <div>
-
                               <Grid container className='mt-4 d-flex justify-content-between align-items-center' >
                              <Grid item xs={4} md={4}>
                   <StyledBadge
@@ -858,15 +870,15 @@ export default function GenralManger() {
                   <img alt="Company Logo" width="100%" id='avatar14'  src={ userData.data.employees.vendors[0].company != null ?  userData.data.employees.vendors[0].company.logo != null ?   userData.data.employees.vendors[0].company.logo['512px'] : '/assests/assets/avatar.png' : '/assests/assets/avatar.png' } />
                   </Avatar>
                 </StyledBadge>
-                            </Grid>
-                           <Grid item xs={4} md={4}>
-                        <span>{ userData.data.employees.vendors[0].email}</span>
                            </Grid>
+                        <Grid item xs={4} md={4}>
+                        <span>{ userData.data.employees.vendors[0].email}</span>
+                         </Grid>
                            <Grid item xs={4} md={4}>
                   {
                     <Link to={`/home/contractor/${ userData.data.employees.vendors[0].id}`} className='btn btn-warning ViewLink'>{t('view')}</Link>
                   }
-                </Grid>
+                            </Grid>
                                
                            <div>
                            </div>
@@ -951,9 +963,9 @@ export default function GenralManger() {
                 
              
           : loaderteam == true ? <CircularProgress color='inherit' />  : ''
-        }
+        } */}
 
-        <div className='img-display' id='vendorsView'>
+        {/* <div className='img-display' id='vendorsView'>
 
 {
   userData != null ? vendorLength == 0 ? '' ||  userData.data.employees == null :  
@@ -1018,15 +1030,19 @@ export default function GenralManger() {
 
 
 
-            </div>
+            </div> */}
       
        </Grid>
+
+
+
+
         </Grid> : loaderteam == true ? <CircularProgress color='inherit'/> :  <Card sx={{padding : '10px' ,paddingTop:'30px',height : '100px',textAlign:'center',fontSize:'20px',fontWeight:'bold'}}>No Found Users</Card>
       }
    <div className='img-display' id='imgView'>
       <img src='/assests/assets/avatar.png'  width="15%" id='myImg'/>
       <Button variant="contained"  onClick={()=>document.getElementById('imgView').style.display = "none"} className="mt-3 mainBg">{t('cancel')}</Button>
    </div>
-</div>
+    </div>
   )
 }

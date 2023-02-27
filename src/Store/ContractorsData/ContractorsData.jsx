@@ -134,7 +134,7 @@ export function ContractorsData({children}){
            })
     }
       return(
-        <contractors.Provider value={{loader,vendors,allContractors,singleContract,contractView,setContractView,joiningDate,errorData,from,to,setFrom,setTo,contractorsPaginations}}>
+        <contractors.Provider value={{loader,vendors,allContractors,singleContract,contractView,setContractView,setErrorData,joiningDate,errorData,from,to,setFrom,setTo,contractorsPaginations}}>
             {children}
         </contractors.Provider>
     )
